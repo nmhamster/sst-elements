@@ -34,6 +34,7 @@
 #define VANADIS_SYSCALL_MMAP		 4090
 #define VANADIS_SYSCALL_UNMAP            4091
 #define VANADIS_SYSCALL_UNAME            4122
+#define VANADIS_SYSCALL_MPROTECT	 4125
 #define VANADIS_SYSCALL_WRITEV           4146
 #define VANADIS_SYSCALL_RT_SETSIGMASK    4195
 #define VANADIS_SYSCALL_MMAP2            4210
@@ -185,6 +186,20 @@ public:
 		case VANADIS_SYSCALL_RM_INOTIFY:
 			{
 				output->verbose(CALL_INFO, 8, 0, "[syscall-handler] found a call to inotify_rm_watch(), by-passing and removing.\n");
+				const uint16_t rc_reg = isaTable->getIntPhysReg(7);
+				regFile->setIntReg( rc_reg, (uint64_t) 0 );
+
+				writeSyscallResult( true );
+
+				for( int i = 0; i < returnCallbacks.size(); ++i ) {
+		                        returnCallbacks[i](hw_thr);
+                		}
+			}
+			break;
+
+		case VANADIS_SYSCALL_MPROTOECT:
+			{
+				output->verbose(CALL_INFO, 8, 0, "[syscall-handler] found a call to mprotect(), by-passing and removing.\n");
 				const uint16_t rc_reg = isaTable->getIntPhysReg(7);
 				regFile->setIntReg( rc_reg, (uint64_t) 0 );
 
