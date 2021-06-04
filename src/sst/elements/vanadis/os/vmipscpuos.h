@@ -197,7 +197,7 @@ public:
 			}
 			break;
 
-		case VANADIS_SYSCALL_MPROTOECT:
+		case VANADIS_SYSCALL_MPROTECT:
 			{
 				output->verbose(CALL_INFO, 8, 0, "[syscall-handler] found a call to mprotect(), by-passing and removing.\n");
 				const uint16_t rc_reg = isaTable->getIntPhysReg(7);
