@@ -893,12 +893,6 @@ protected:
 			                             insertDecodeFault = false;
  						} break;
 
-						case MIPS_SPEC_OP_MASK_MOVN:
-							break;
-
-						case MIPS_SPEC_OP_MASK_MOVZ:
-							break;
-
 						case MIPS_SPEC_OP_MASK_MTHI:
 							break;
 
