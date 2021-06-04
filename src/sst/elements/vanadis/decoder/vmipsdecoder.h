@@ -881,6 +881,18 @@ protected:
 							}
 							break;
 
+						case MIPS_SPEC_OP_MASK_MOVN: {
+ 						    bundle->addInstruction(new VanadisMoveCompareImmInstruction(ins_addr, hw_thr, options, rd,
+ 										rs, rt, 0, REG_COMPARE_NEQ));
+			 			    insertDecodeFault = false;
+ 						} break;
+
+     				                case MIPS_SPEC_OP_MASK_MOVZ: {
+			   	  			bundle->addInstruction(new VanadisMoveCompareImmInstruction(ins_addr, hw_thr, options, rd,
+                                                                                 rs, rt, 0, REG_COMPARE_EQ));
+			                             insertDecodeFault = false;
+ 						} break;
+
 						case MIPS_SPEC_OP_MASK_MOVN:
 							break;
 

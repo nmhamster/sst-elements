@@ -74,6 +74,9 @@
 #include "inst/vsetreg.h"
 #include "inst/vsyscall.h"
 
+// GPR Move
+#include "inst/vmovci.h"
+
 // FP Convert/Move
 #include "inst/vfp2gpr.h"
 #include "inst/vgpr2fp.h"
